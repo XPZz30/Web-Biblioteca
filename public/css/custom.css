@@ -1,0 +1,125 @@
+.text-light-gray {
+    color: #b9bcc0 !important;
+}
+
+.background-deep-blue {
+    background-color: #0f1119 !important;
+}
+
+.card-text {
+    color: #b9bcc0 !important;
+}
+
+.book-card {
+    background-color: #1a1d25;
+    border-radius: 12px;
+    padding: 20px;
+    color: #b9bcc0;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    height: 100%;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-cover img {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 2/3; /* proporção típica de capa de livro */
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #111;
+    max-width: 100%;
+    max-height: 400px; /* altura máxima para manter proporção */
+    display: block;
+    margin: 0 auto;
+    margin: 0 auto;
+
+
+}
+
+
+.book-title {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.book-author,
+.book-year,
+.book-stock {
+    font-size: 1rem;
+    color: #b9bcc0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #b9bcc0;
+    background-color: #0f1119;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+.custom-navbar {
+    background-color: #0f1119;
+}
+
+.nav-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #b9bcc0;
+}
+
+.nav-title:hover {
+    color: #ffffff;
+}
+
+.nav-link-custom {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    color: #b9bcc0 !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link-custom:hover {
+    color: #ffffff !important;
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    color: #5a78ff;
+    font-size: 1.3rem;
+}
+
+.background-search {
+    background-color: #1a1d25;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    border-color: #1a1d25;
+}
+
+.background-search::placeholder {
+    color: #b9bcc0;
+    opacity: 1; /* Garante que a cor será visível */
+}
+
+.background-search:focus {
+    outline: none;
+    border-color: #5a78ff; /* azul suave ou cor de destaque */
+    box-shadow: 0 0 0 2px rgba(90, 120, 255, 0.4); /* glow leve */
+    background-color: #1d2028;
+    color: #ffffff;
+}
