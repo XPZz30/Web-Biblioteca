@@ -21,5 +21,9 @@
         </div>
         @endforeach
     </div>
+    @foreach($books as $book)
+         <div class="book-item"></div>
+    @endforeach
+
 </div>
 @endsection

@@ -32,7 +32,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: laravel
-      MYSQL_USER: user
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
@@ -50,15 +50,15 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD:  
+      MYSQL_ROOT_PASSWORD: root
     depends_on:
       - mysql
     networks:
       - laravel
 
 networks:
-    laravel:
-      driver: bridge
+  laravel:
+    driver: bridge
 
 volumes:
-    mysql-data:
+  mysql-data:

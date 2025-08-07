@@ -10,7 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 </head>
@@ -26,21 +25,44 @@
                     <li class="nav-item">
                         <a class="nav-link nav-link-custom" href="/livros">Livros</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-link-custom" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Autores
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="navbarDropdown">
+                            @php
+                                $authors = isset($authors) && is_array($authors) ? $authors : [];
+                            @endphp
+                            @if(count($authors))
+                                @foreach($authors as $author)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('livros.index', ['author' => $author]) }}">
+                                            {{ $author }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li><span class="dropdown-item text-muted">Nenhum autor encontrado</span></li>
+                            @endif
+                        </ul>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-link-custom" href="#">Autores</a>
+                        <a class="nav-link nav-link-custom" href="#">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="#">Editoras</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-custom" href="#">Gêneros</a>
                     </li>
                 </ul>
             </div>
-           
-            <div class="d-none d-md-flex align-items-center">
-                <input type="text" class="form-control search-input d-none d-md-block background-search" role="search" placeholder="Buscar livros...">
-                <button class="icon-button">
+            <form action="{{ route('search') }}" method="GET" class="d-flex align-items-center">
+                <input type="text" class="form-control search-input background-search" name="query" placeholder="Buscar livros...">
+                <button type="submit" class="icon-button">
                     <i class="bi bi-search"></i>
                 </button>
-            </div>
+            </form>
         </div>
     </nav>
 
@@ -49,6 +71,8 @@
         @yield('content')
     </main>
 
+    {{-- Bootstrap JS Bundle CDN --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
