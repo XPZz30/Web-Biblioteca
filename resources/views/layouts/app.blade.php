@@ -31,24 +31,39 @@
                         </a>
                         <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="navbarDropdown">
                             @php
-                                $authors = isset($authors) && is_array($authors) ? $authors : [];
+                            $authors = isset($authors) && is_array($authors) ? $authors : [];
                             @endphp
                             @if(count($authors))
-                                @foreach($authors as $author)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('livros.index', ['author' => $author]) }}">
-                                            {{ $author }}
-                                        </a>
-                                    </li>
-                                @endforeach
+                            @foreach($authors as $author)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('livros.index', ['author' => $author]) }}">
+                                    {{ $author }}
+                                </a>
+                            </li>
+                            @endforeach
                             @else
-                                <li><span class="dropdown-item text-muted">Nenhum autor encontrado</span></li>
+                            <li><span class="dropdown-item text-muted">Nenhum autor encontrado</span></li>
                             @endif
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-custom" href="#">Categorias</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-link-custom" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="categoriesDropdown">
+                            @forelse($categories as $category) <!-- $categories deve ser uma coleção -->
+                            <li>
+                                <a class="dropdown-item" href="{{ route('livros.index', ['category' => $category->id]) }}">
+                                    {{ $category->name }}
+                                </a>
+                            </li>
+                            @empty
+                            <li><span class="dropdown-item text-muted">Nenhuma categoria encontrada</span></li>
+                            @endforelse
+                        </ul>
                     </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link nav-link-custom" href="#">Editoras</a>
                     </li>

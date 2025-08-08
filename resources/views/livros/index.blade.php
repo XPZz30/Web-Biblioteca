@@ -21,9 +21,22 @@
         </div>
         @endforeach
     </div>
-    @foreach($books as $book)
-         <div class="book-item"></div>
-    @endforeach
 
+    @if(request()->has('category'))
+    <div class="alert alert-info">
+        Mostrando livros da categoria:
+        <strong>
+            @if(is_array(request()->category))
+            @foreach(request()->category as $categoryId)
+            {{ \App\Models\Category::find($categoryId)->name }}
+            @if(!$loop->last) {{ ', ' }} @endif
+            @endforeach
+            @else
+            {{ \App\Models\Category::find(request()->category)->name }}
+            @endif
+        </strong>
+        <a href="{{ route('livros.index') }}" class="float-end">Limpar filtro</a>
+    </div>
+    @endif
 </div>
 @endsection

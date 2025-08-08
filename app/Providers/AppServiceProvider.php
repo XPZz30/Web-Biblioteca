@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Book;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,10 +14,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layouts.app', function ($view) {
-            // Busca todos os autores distintos da coluna 'author' da tabela books
+        View::composer('*', function ($view) {
+            // Autores (mantendo como array de strings)
             $authors = Book::distinct()->pluck('author')->toArray();
-            $view->with('authors', $authors);
+
+            // Categorias (agora trazendo objetos completos)
+            $categories = Category::orderBy('name')->get();
+
+            $view->with([
+                'authors' => $authors,
+                'categories' => $categories
+            ]);
         });
     }
 }

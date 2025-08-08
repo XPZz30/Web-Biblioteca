@@ -9,6 +9,11 @@ class Book extends Model
 {
     use HasFactory;
 
-   protected $fillable = ['title', 'author', 'publisher', 'isbn', 'year', 'stock', 'cover'];
+    protected $fillable = ['title', 'author', 'publisher', 'isbn', 'year', 'stock', 'cover'];
 
+    // Relacionamento muitos-para-muitos com Categories
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'book_category', 'book_id', 'category_id');
+    }
 }
