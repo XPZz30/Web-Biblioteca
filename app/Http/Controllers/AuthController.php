@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\alert;
+
 class AuthController extends Controller
 {
     // Exibir a página de login
@@ -29,6 +31,7 @@ class AuthController extends Controller
         }
 
         // Se falhar, redireciona de volta com erro
-        return back()->withErrors(['email' => 'As credenciais fornecidas são inválidas.']);
+        return back()->withErrors(['email' => 'As credenciais fornecidas são inválidas.']) ;
+        
     }
 }

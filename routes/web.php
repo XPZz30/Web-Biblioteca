@@ -9,7 +9,7 @@ use App\Http\Controllers\AuthController;
 
 // Rota de login
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login.form');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'login'])->name('login');
 
 // Proteger rotas que requerem login
 Route::middleware('auth')->group(function () {

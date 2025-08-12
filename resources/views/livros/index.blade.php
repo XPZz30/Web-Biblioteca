@@ -17,8 +17,8 @@
                         <p class="book-author">Autor: {{ $book->author }}</p>
                         <p class="book-year">Ano: {{ $book->year ?? 'N/A' }}</p>
                         <p class="book-stock">
-                            <span class="badge bg-{{ $book->price > 0 ? 'success' : 'danger' }}">
-                                Valor: {{ $book->price }}
+                            <span class="badge bg-{{ $book->price }}">
+                                Valor: R$ {{ $book->price }}
                             </span>
                         </p>
                     </div>
