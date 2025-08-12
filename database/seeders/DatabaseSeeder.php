@@ -2,20 +2,21 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Book;
-use App\Models\Category;
-use App\Models\Loan;
-
+use Illuminate\Database\Seeder;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\BookSeeder;
+use Database\Seeders\VendaSeeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
-        User::factory(5)->create();
-        Book::factory(5)->create();
-        Loan::factory(5)->create();
-        Category::factory(5)->create();
+        $this->call([
+            CategorySeeder::class, // Deve vir primeiro
+            BookSeeder::class,
+            UserSeeder::class,
+        ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 
@@ -10,7 +12,7 @@ class CategorySeeder extends Seeder
         $categories = ['Ficção', 'Suspense', 'Tecnologia', 'História', 'Filosofia'];
 
         foreach ($categories as $category) {
-            \App\Models\Category::create(['name' => $category]);
+            Category::create(['name' => $category]);
         }
     }
 }

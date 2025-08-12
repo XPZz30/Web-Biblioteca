@@ -48,10 +48,17 @@
 }
 
 .book-author,
-.book-year,
-.book-stock {
+.book-year {
     font-size: 1rem;
     color: #b9bcc0;
+    margin: 0;
+}
+
+.book-stock{
+    font-family:  sans-serif;
+    width: 100%;
+    font-size: 1.5rem;
+    color: #5a78ff;
     margin: 0;
 }
 
@@ -122,4 +129,44 @@ h6 {
     box-shadow: 0 0 0 2px rgba(90, 120, 255, 0.4); /* glow leve */
     background-color: #1d2028;
     color: #ffffff;
+}
+
+.book-cover-large {
+    width: 350px; /* Aumentei a largura */
+    height: 525px; /* Mantendo a proporção 2/3 */
+    border-radius: 8px !important; /* Bordas mais arredondadas */
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    border: 1px solid #eee; /* Borda sutil externa */
+}
+
+
+/* Efeito hover opcional */
+.book-cover-large:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .book-cover-large {
+        width: 200px;
+        padding: 8px;
+    }
+}
+
+.book-details p {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.book-description {
+    color: black;
+    line-height: 1.6;
+}
+
+.show-author-title{
+    color: #5a78ff;
 }

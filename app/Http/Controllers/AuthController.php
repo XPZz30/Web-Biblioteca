@@ -25,7 +25,7 @@ class AuthController extends Controller
         // Tentar autenticar o usuário
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Se autenticado, redireciona para a página principal ou dashboard
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/livros');
         }
 
         // Se falhar, redireciona de volta com erro
