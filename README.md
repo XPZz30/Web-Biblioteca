@@ -1,28 +1,3 @@
-
-# LivrariaWeb
-
-Sistema de Gerenciamento de Biblioteca Online
-
-## Descrição
-LivrariaWeb é um sistema web desenvolvido em Laravel para gerenciar uma biblioteca, permitindo o cadastro, administração e empréstimo de livros, categorias e usuários. O projeto possui dashboard administrativa, controle de estoque, sistema de empréstimos com aprovação e devolução, além de interface moderna e responsiva utilizando Bootstrap.
-
-## Funcionalidades
-
-- **Dashboard Administrativa**
-	- Visualização de estatísticas rápidas: total de livros, categorias, usuários e empréstimos
-	- Listagem dos últimos empréstimos com status e ações
-	- CRUD completo para livros, categorias e usuários
-	- Aprovação e finalização de empréstimos diretamente pela dashboard
-
-- **Livros**
-	- Cadastro de novos livros com título, autor, ISBN, ano, estoque, descrição e capa
-	- Edição e exclusão de livros
-	- Controle de estoque
-
-- **Categorias**
-	- Cadastro, edição e exclusão de categorias
-
-
 	# 📚 LivrariaWeb
 
 	<p align="center">
