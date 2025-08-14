@@ -6,95 +6,51 @@ Sistema de Gerenciamento de Biblioteca Online
 ## Descrição
 LivrariaWeb é um sistema web desenvolvido em Laravel para gerenciar uma biblioteca, permitindo o cadastro, administração e empréstimo de livros, categorias e usuários. O projeto possui dashboard administrativa, controle de estoque, sistema de empréstimos com aprovação e devolução, além de interface moderna e responsiva utilizando Bootstrap.
 
+
+# LivrariaWeb
+
+**Sistema de Gerenciamento de Biblioteca Online**
+
+---
+
+## Descrição
+LivrariaWeb é uma aplicação web desenvolvida em Laravel para otimizar a gestão de bibliotecas. Permite cadastro, administração e controle de empréstimos de livros, categorias e usuários, com interface moderna e responsiva baseada em Bootstrap.
+
+---
+
 ## Funcionalidades
 
-- **Dashboard Administrativa**
-	- Visualização de estatísticas rápidas: total de livros, categorias, usuários e empréstimos
-	- Listagem dos últimos empréstimos com status e ações
-	- CRUD completo para livros, categorias e usuários
-	- Aprovação e finalização de empréstimos diretamente pela dashboard
+- **Dashboard Administrativa**: Estatísticas em tempo real, últimos empréstimos, ações rápidas (aprovação/finalização), CRUD completo de livros, categorias e usuários.
+- **Gestão de Livros**: Cadastro com título, autor, ISBN, ano, estoque, descrição e capa; edição e exclusão; controle de estoque com alertas.
+- **Gestão de Categorias**: Criação, edição, exclusão e associação de livros.
+- **Gestão de Usuários**: Cadastro, edição, exclusão, permissões por função (admin/user).
+- **Sistema de Empréstimos**: Solicitação, aprovação, finalização, registro de datas, status (pendente, aprovado, devolvido, atrasado), histórico por usuário.
+- **Interface**: Layout responsivo, customização visual (`custom.css`), feedback visual com ícones e alertas.
 
-- **Livros**
-	- Cadastro de novos livros com título, autor, ISBN, ano, estoque, descrição e capa
-	- Edição e exclusão de livros
-	- Controle de estoque
+---
 
-- **Categorias**
-	- Cadastro, edição e exclusão de categorias
+## Requisitos
 
+- PHP >= 8.0
+- Composer
+- Laravel >= 10
+- Banco de dados SQLite (padrão, pode ser alterado para MySQL/PostgreSQL)
 
-	# 📚 LivrariaWeb
+---
 
-	<p align="center">
-	  <b>Sistema de Gerenciamento de Biblioteca Online</b>
-	</p>
+## Estrutura do Projeto
 
-	---
+```
+app/Http/Controllers   # Controladores das funcionalidades
+app/Models             # Modelos das principais entidades
+resources/views        # Views Blade (admin, livros, categorias, usuários, empréstimos)
+database/migrations    # Migrations das tabelas
+database/seeders       # Seeders para dados iniciais
+public/css             # Estilos customizados
+```
 
-	## ✨ Descrição
+---
 
-	LivrariaWeb é uma aplicação web robusta desenvolvida em Laravel, projetada para otimizar a gestão de bibliotecas. Permite cadastro, administração e controle de empréstimos de livros, categorias e usuários. A interface é moderna, responsiva e utiliza Bootstrap para garantir acessibilidade e usabilidade tanto para administradores quanto para usuários.
-
-	---
-
-	## 🚀 Funcionalidades
-
-	### Dashboard Administrativa
-	- Estatísticas rápidas: total de livros, categorias, usuários e empréstimos em tempo real
-	- Acompanhamento dos últimos empréstimos, com status e opções de ações (aprovação, finalização)
-	- CRUD completo para gestão de livros, categorias e usuários
-	- Aprovação e finalização de empréstimos diretamente pelo painel
-
-	### Gestão de Livros
-	- Cadastro de livros com título, autor, ISBN, ano, estoque, descrição e capa
-	- Edição e exclusão de livros
-	- Controle de estoque com alertas
-
-	### Gestão de Categorias
-	- Criação, edição e exclusão de categorias
-	- Associação de livros a categorias específicas
-
-	### Gestão de Usuários
-	- Cadastro e gerenciamento de usuários e administradores
-	- Edição e exclusão de perfis
-	- Controle de permissões por funções (admin/user)
-
-	### Sistema de Empréstimos
-	- Solicitação de empréstimos por usuários
-	- Aprovação e finalização por administradores
-	- Registro de data prevista e data de devolução
-	- Status: pendente, aprovado, devolvido, atrasado
-	- Histórico de empréstimos por usuário
-
-	### Interface
-	- Layout responsivo com Bootstrap
-	- Estilização customizada (`custom.css`)
-	- Feedback visual com ícones e alertas
-
-	---
-
-	## ⚙️ Requisitos
-
-	- **PHP** >= 8.0
+## Licença
+Este projeto é de autoria exclusiva e não está disponível para uso sem a autorização expressa do criador. A reprodução, distribuição ou modificação do código está sujeita à permissão do autor.
 	- **Composer**
-	- **Laravel** >= 10
-	- **Banco de dados SQLite** (padrão, pode ser alterado para MySQL/PostgreSQL)
-
-	---
-
-	## 📂 Estrutura do Projeto
-
-	```
-	app/Http/Controllers   # Controladores das funcionalidades
-	app/Models             # Modelos das principais entidades
-	resources/views        # Views Blade (admin, livros, categorias, usuários, empréstimos)
-	database/migrations    # Migrations das tabelas
-	database/seeders       # Seeders para dados iniciais
-	public/css             # Estilos customizados
-	```
-
-	---
-
-	## 📜 Licença
-
-	> Este projeto é de autoria exclusiva e não está disponível para uso sem a autorização expressa do criador. A reprodução, distribuição ou modificação do código está sujeita à permissão do autor.
