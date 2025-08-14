@@ -25,19 +25,16 @@
 }
 
 .book-cover img {
-    width: 90%;
-    height: auto;
+    width: 350px;
+    height: 525px;
     aspect-ratio: 2/3; /* proporção típica de capa de livro */
     object-fit: cover;
     border-radius: 8px;
     background-color: #111;
     max-width: 100%;
-    max-height: 400px; /* altura máxima para manter proporção */
+    max-height: 525px;
     display: block;
     margin: 0 auto;
-    margin: 0 auto;
-
-
 }
 
 

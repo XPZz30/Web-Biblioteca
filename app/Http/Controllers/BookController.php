@@ -63,4 +63,54 @@ class BookController extends Controller
         $book = Book::with('categories')->findOrFail($id);
         return view('livros.show', compact('book'));
     }
+
+    // Store - cadastrar novo livro
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'publisher' => 'nullable|string|max:255',
+            'isbn' => 'nullable|string|max:20',
+            'year' => 'nullable|integer|min:1000|max:9999',
+            'stock' => 'nullable|integer|min:0',
+            'cover' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+        $book = Book::create($validated);
+        return redirect()->route('admin.dashboard')->with('success', 'Livro cadastrado com sucesso!');
+    }
+
+    // Edit - exibir formulário de edição
+    public function edit($id)
+    {
+        $book = Book::findOrFail($id);
+        return view('livros.edit', compact('book'));
+    }
+
+    // Update - atualizar livro
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'publisher' => 'nullable|string|max:255',
+            'isbn' => 'nullable|string|max:20',
+            'year' => 'nullable|integer|min:1000|max:9999',
+            'stock' => 'nullable|integer|min:0',
+            'cover' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+        $book = Book::findOrFail($id);
+        $book->update($validated);
+        return redirect()->route('admin.dashboard')->with('success', 'Livro atualizado com sucesso!');
+    }
+
+    // Destroy - excluir livro
+    public function destroy($id)
+    {
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Livro excluído com sucesso!');
+    }
 }

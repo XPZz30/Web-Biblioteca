@@ -23,7 +23,7 @@
                 <p><strong>ISBN:</strong> {{ $book->isbn }}</p>
                 <p><strong>Editora:</strong> {{ $book->publisher ?? 'Não informado' }}</p>
                 <p><strong>Ano de Publicação:</strong> {{ $book->year ?? 'Não informado' }}</p>
-                <p><strong>Preço:</strong> R$ {{ number_format($book->price, 2, ',', '.') }}</p>
+                <!-- Preço removido -->
                 <p><strong>Estoque Disponível:</strong> {{ $book->stock }}</p>
 
                 @if($book->categories->isNotEmpty())
@@ -38,19 +38,19 @@
                 </div>
             </div>
 
-            <!-- Botão de Comprar -->
+            <!-- Botão de Empréstimo -->
             <div class="mt-5 d-flex justify-content-between">
                 @if($book->stock > 0)
-                <form action="{{ route('vendas.store') }}" method="POST">
+                <form action="{{ route('loans.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
                     <button type="submit" class="btn btn-primary btn-lg">
-                        <i class="bi bi-cart-plus"></i> Comprar por R$ {{ number_format($book->price, 2, ',', '.') }}
+                        <i class="bi bi-journal-arrow-up"></i> Solicitar Empréstimo
                     </button>
                 </form>
                 @else
                 <button class="btn btn-secondary btn-lg" disabled>
-                    <i class="bi bi-exclamation-circle"></i> Indisponível para compra
+                    <i class="bi bi-exclamation-circle"></i> Indisponível para empréstimo
                 </button>
                 @endif
 

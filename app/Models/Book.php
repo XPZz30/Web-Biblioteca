@@ -17,7 +17,6 @@ class Book extends Model
         'year',
         'stock',
         'cover',
-        'price',
         'description'
     ];
 

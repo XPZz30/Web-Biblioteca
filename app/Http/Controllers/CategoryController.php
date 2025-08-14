@@ -2,28 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // Recupera todas as categorias ordenadas por nome
-        $categories = Category::orderBy('name')->get(); // Isso retorna uma coleção, não uma string
-
-        // Passa as categorias para a view
-        return view('livros.index', compact('categories'));
+        $categories = Category::orderBy('name')->get();
+        return view('categories.index', compact('categories'));
     }
 
-    public function filterByCategory(Request $request)
+    // Store - cadastrar nova categoria
+    public function store(Request $request)
     {
-        $categoryId = $request->input('category'); // Obtém o ID da categoria selecionada
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        Category::create($validated);
+        return redirect()->route('admin.dashboard')->with('success', 'Categoria cadastrada com sucesso!');
+    }
 
-        // Filtra os livros que pertencem à categoria selecionada
-        $category = Category::find($categoryId);
-        $books = $category ? $category->books : collect(); // Obtém os livros da categoria
+    // Edit - exibir formulário de edição
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('categories.edit', compact('category'));
+    }
 
-        return view('livros.index', compact('books'));
+    // Update - atualizar categoria
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        $category = Category::findOrFail($id);
+        $category->update($validated);
+        return redirect()->route('admin.dashboard')->with('success', 'Categoria atualizada com sucesso!');
+    }
+
+    // Destroy - excluir categoria
+    public function destroy($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Categoria excluída com sucesso!');
     }
 }
