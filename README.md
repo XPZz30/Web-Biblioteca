@@ -22,88 +22,79 @@ LivrariaWeb é um sistema web desenvolvido em Laravel para gerenciar uma bibliot
 - **Categorias**
 	- Cadastro, edição e exclusão de categorias
 
-	LivrariaWeb
 
-	Sistema de Gerenciamento de Biblioteca Online
+	# 📚 LivrariaWeb
 
-	Descrição
+	<p align="center">
+	  <b>Sistema de Gerenciamento de Biblioteca Online</b>
+	</p>
 
-	LivrariaWeb é uma aplicação web robusta desenvolvida em Laravel, projetada para otimizar a gestão de bibliotecas. Este sistema permite o cadastro, administração e controle de empréstimos de livros, categorias e usuários. A interface oferece uma experiência moderna e responsiva, utilizando o framework Bootstrap, garantindo funcionalidade e acessibilidade tanto para administradores quanto para usuários.
+	---
 
-	Funcionalidades
+	## ✨ Descrição
 
-	Dashboard Administrativa
-	- Exibição de estatísticas rápidas: total de livros, categorias, usuários e empréstimos em tempo real
+	LivrariaWeb é uma aplicação web robusta desenvolvida em Laravel, projetada para otimizar a gestão de bibliotecas. Permite cadastro, administração e controle de empréstimos de livros, categorias e usuários. A interface é moderna, responsiva e utiliza Bootstrap para garantir acessibilidade e usabilidade tanto para administradores quanto para usuários.
+
+	---
+
+	## 🚀 Funcionalidades
+
+	### Dashboard Administrativa
+	- Estatísticas rápidas: total de livros, categorias, usuários e empréstimos em tempo real
 	- Acompanhamento dos últimos empréstimos, com status e opções de ações (aprovação, finalização)
 	- CRUD completo para gestão de livros, categorias e usuários
-	- Aprovação e finalização de empréstimos diretamente através do painel de controle
+	- Aprovação e finalização de empréstimos diretamente pelo painel
 
-	Gestão de Livros
-	- Cadastro de livros com detalhes como título, autor, ISBN, ano de publicação, quantidade disponível em estoque, descrição e capa
-	- Opções de edição e exclusão de registros de livros
-	- Controle completo de estoque, com alertas para livros próximos da baixa no inventário
+	### Gestão de Livros
+	- Cadastro de livros com título, autor, ISBN, ano, estoque, descrição e capa
+	- Edição e exclusão de livros
+	- Controle de estoque com alertas
 
-	Gestão de Categorias
+	### Gestão de Categorias
 	- Criação, edição e exclusão de categorias
-	- Associação de livros a categorias específicas para facilitar a organização
+	- Associação de livros a categorias específicas
 
-	Gestão de Usuários
+	### Gestão de Usuários
 	- Cadastro e gerenciamento de usuários e administradores
-	- Edição e exclusão de perfis de usuários
+	- Edição e exclusão de perfis
 	- Controle de permissões por funções (admin/user)
 
-	Sistema de Empréstimos
+	### Sistema de Empréstimos
 	- Solicitação de empréstimos por usuários
-	- Aprovação e finalização de empréstimos por administradores
-	- Registro de data prevista e data de devolução dos livros
-	- Status do empréstimo: pendente, aprovado, devolvido, atrasado
-	- Acompanhamento de todos os empréstimos realizados por cada usuário
+	- Aprovação e finalização por administradores
+	- Registro de data prevista e data de devolução
+	- Status: pendente, aprovado, devolvido, atrasado
+	- Histórico de empréstimos por usuário
 
-	Interface
-	- Layout totalmente responsivo utilizando Bootstrap
-	- Estilização customizada com arquivo custom.css para adaptação visual
-	- Feedback visual em tempo real com ícones e mensagens de alerta
+	### Interface
+	- Layout responsivo com Bootstrap
+	- Estilização customizada (`custom.css`)
+	- Feedback visual com ícones e alertas
 
-	Requisitos
+	---
 
-	PHP >= 8.0
-	Composer
-	Laravel >= 10
-	Banco de dados SQLite (configuração padrão, pode ser alterado para MySQL/PostgreSQL)
+	## ⚙️ Requisitos
 
-	Instalação
+	- **PHP** >= 8.0
+	- **Composer**
+	- **Laravel** >= 10
+	- **Banco de dados SQLite** (padrão, pode ser alterado para MySQL/PostgreSQL)
 
-	Clone o repositório:
+	---
 
-	git clone https://github.com/XPZz30/Web-Biblioteca.git
+	## 📂 Estrutura do Projeto
 
-	Instale as dependências do Composer:
+	```
+	app/Http/Controllers   # Controladores das funcionalidades
+	app/Models             # Modelos das principais entidades
+	resources/views        # Views Blade (admin, livros, categorias, usuários, empréstimos)
+	database/migrations    # Migrations das tabelas
+	database/seeders       # Seeders para dados iniciais
+	public/css             # Estilos customizados
+	```
 
-	composer install
+	---
 
-	Configure o arquivo .env de acordo com seu ambiente
+	## 📜 Licença
 
-	Execute as migrations:
-
-	php artisan migrate
-
-	(Opcional) Para inserir dados iniciais, execute os seeders:
-
-	php artisan db:seed
-
-	Inicie o servidor de desenvolvimento:
-
-	php artisan serve
-
-	Estrutura do Projeto
-
-	app/Http/Controllers - Controladores para as funcionalidades do sistema
-	app/Models - Modelos das principais entidades (livros, categorias, usuários)
-	resources/views - Views Blade para o painel administrativo e páginas dos usuários
-	database/migrations - Migrations para criação das tabelas no banco de dados
-	database/seeders - Seeders para inserir dados iniciais
-	public/css - Arquivos de estilos customizados
-
-	Licença
-
-	Este projeto é de autoria exclusiva e não está disponível para uso sem a autorização expressa do criador. A reprodução, distribuição ou modificação do código está sujeita à permissão do autor.
+	> Este projeto é de autoria exclusiva e não está disponível para uso sem a autorização expressa do criador. A reprodução, distribuição ou modificação do código está sujeita à permissão do autor.
