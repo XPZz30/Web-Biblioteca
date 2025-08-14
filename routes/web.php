@@ -1,22 +1,41 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\VendaController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\{
+    BookController,
+    AuthorController,
+    CategoryController,
+    VendaController,
+    AuthController,
+    AdminController
+};
 
-// Rota de login
+// Rotas públicas
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login.form');
-Route::post('/', [AuthController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'login'])
+    ->name('login')
+    ->middleware('throttle:5,1');
 
-// Proteger rotas que requerem login
+// Rotas autenticadas
 Route::middleware('auth')->group(function () {
-    Route::get('/livros', [BookController::class, 'index'])->name('livros.index');
-    Route::get('/search', [BookController::class, 'search'])->name('search');
+    // Livros
+    Route::prefix('livros')->group(function () {
+        Route::get('/', [BookController::class, 'index'])->name('livros.index');
+        Route::get('/search', [BookController::class, 'search'])->name('search'); // Nome mantido como 'search'
+        Route::get('/livros/{id}', [BookController::class, 'show'])->name('livros.show');
+    });
+
+    // Autores
     Route::get('/autores', [AuthorController::class, 'index'])->name('autores.index');
+
+    // Categorias
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::get('/livros/{id}', [BookController::class, 'show'])->name('livros.show');
-    Route::post('/vendas', [VendaController::class, 'store'])->name('vendas.store');
+
+    // Vendas
+    Route::post('/vendas', [VendaController::class, 'store'])
+        ->name('vendas.store')
+        ->middleware('verified');
+
+
+
 });
