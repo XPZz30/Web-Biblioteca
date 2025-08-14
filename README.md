@@ -1,44 +1,41 @@
-
-# LivrariaWeb
-
-Sistema de Gerenciamento de Biblioteca Online
-
-## Descrição
-LivrariaWeb é um sistema web desenvolvido em Laravel para gerenciar uma biblioteca, permitindo o cadastro, administração e empréstimo de livros, categorias e usuários. O projeto possui dashboard administrativa, controle de estoque, sistema de empréstimos com aprovação e devolução, além de interface moderna e responsiva utilizando Bootstrap.
-
-
 # LivrariaWeb
 
 **Sistema de Gerenciamento de Biblioteca Online**
 
 ---
 
-## Descrição
-LivrariaWeb é uma aplicação web desenvolvida em Laravel para otimizar a gestão de bibliotecas. Permite cadastro, administração e controle de empréstimos de livros, categorias e usuários, com interface moderna e responsiva baseada em Bootstrap.
+## Sobre o Projeto
 
----
+LivrariaWeb é uma aplicação web desenvolvida em Laravel, criada para otimizar e facilitar a gestão de bibliotecas. O sistema permite o cadastro, administração e controle de empréstimos de livros, categorias e usuários, oferecendo uma interface moderna, responsiva e intuitiva baseada em Bootstrap.
 
-## Funcionalidades
+### Tecnologias Utilizadas
 
-- **Dashboard Administrativa**: Estatísticas em tempo real, últimos empréstimos, ações rápidas (aprovação/finalização), CRUD completo de livros, categorias e usuários.
-- **Gestão de Livros**: Cadastro com título, autor, ISBN, ano, estoque, descrição e capa; edição e exclusão; controle de estoque com alertas.
-- **Gestão de Categorias**: Criação, edição, exclusão e associação de livros.
-- **Gestão de Usuários**: Cadastro, edição, exclusão, permissões por função (admin/user).
-- **Sistema de Empréstimos**: Solicitação, aprovação, finalização, registro de datas, status (pendente, aprovado, devolvido, atrasado), histórico por usuário.
-- **Interface**: Layout responsivo, customização visual (`custom.css`), feedback visual com ícones e alertas.
-
----
-
-## Requisitos
-
-- PHP >= 8.0
+- PHP 8+
+- Laravel
+- Bootstrap 5
+- Blade (template engine)
+- SQLite (padrão, adaptável para MySQL/PostgreSQL)
 - Composer
-- Laravel >= 10
-- Banco de dados SQLite (padrão, pode ser alterado para MySQL/PostgreSQL)
+- JavaScript (Vite, opcional)
 
----
+### Principais Funcionalidades
 
-## Estrutura do Projeto
+- Dashboard administrativa com estatísticas em tempo real
+- Listagem e acompanhamento dos últimos empréstimos
+- CRUD completo para livros, categorias e usuários
+- Aprovação e finalização de empréstimos pelo painel
+- Cadastro de livros com título, autor, ISBN, ano, estoque, descrição e capa
+- Controle de estoque com alertas
+- Criação, edição e exclusão de categorias
+- Associação de livros a categorias
+- Cadastro, edição e exclusão de usuários e administradores
+- Controle de permissões por função (admin/user)
+- Solicitação, aprovação e finalização de empréstimos
+- Registro de datas e status dos empréstimos (pendente, aprovado, devolvido, atrasado)
+- Histórico de empréstimos por usuário
+- Layout responsivo e customização visual
+
+### Estrutura do Projeto
 
 ```
 app/Http/Controllers   # Controladores das funcionalidades
@@ -51,6 +48,6 @@ public/css             # Estilos customizados
 
 ---
 
-## Licença
-Este projeto é de autoria exclusiva e não está disponível para uso sem a autorização expressa do criador. A reprodução, distribuição ou modificação do código está sujeita à permissão do autor.
-	- **Composer**
+## Aviso Legal
+
+Este projeto é de autoria exclusiva e não está disponível para uso, reprodução, distribuição ou modificação sem a autorização expressa do criador.
