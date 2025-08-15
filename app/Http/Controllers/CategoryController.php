@@ -48,4 +48,14 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('admin.dashboard')->with('success', 'Categoria excluída com sucesso!');
     }
+    // Exclusão em massa de categorias
+    public function bulkDelete(Request $request)
+    {
+        $ids = $request->input('selected_categories', []);
+        if (!empty($ids)) {
+            Category::whereIn('id', $ids)->delete();
+            return redirect()->route('admin.dashboard')->with('success', 'Categorias excluídas com sucesso!');
+        }
+        return redirect()->route('admin.dashboard')->with('error', 'Nenhuma categoria selecionada.');
+    }
 }

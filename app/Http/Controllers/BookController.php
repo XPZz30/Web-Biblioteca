@@ -76,8 +76,16 @@ class BookController extends Controller
             'stock' => 'nullable|integer|min:0',
             'cover' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'categories' => 'array',
+            'categories.*' => 'exists:categories,id',
         ]);
-        $book = Book::create($validated);
+        $bookData = $validated;
+        unset($bookData['categories']);
+        $book = Book::create($bookData);
+        // Associa as categorias selecionadas, se houver
+        if (!empty($request->categories)) {
+            $book->categories()->sync($request->categories);
+        }
         return redirect()->route('admin.dashboard')->with('success', 'Livro cadastrado com sucesso!');
     }
 
@@ -112,5 +120,15 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $book->delete();
         return redirect()->route('admin.dashboard')->with('success', 'Livro excluído com sucesso!');
+    }
+    // Exclusão em massa de livros
+    public function bulkDelete(Request $request)
+    {
+        $ids = $request->input('selected_books', []);
+        if (!empty($ids)) {
+            Book::whereIn('id', $ids)->delete();
+            return redirect()->route('admin.dashboard')->with('success', 'Livros excluídos com sucesso!');
+        }
+        return redirect()->route('admin.dashboard')->with('error', 'Nenhum livro selecionado.');
     }
 }

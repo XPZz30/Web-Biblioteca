@@ -27,6 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
     Route::put('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+
+    // Exclusão em massa
+    Route::post('/users/bulk-delete', [App\Http\Controllers\UserController::class, 'bulkDelete'])->name('users.bulkDelete');
+    Route::post('/livros/bulk-delete', [App\Http\Controllers\BookController::class, 'bulkDelete'])->name('livros.bulkDelete');
+    Route::post('/categories/bulk-delete', [App\Http\Controllers\CategoryController::class, 'bulkDelete'])->name('categories.bulkDelete');
+    
     // Livros
     Route::prefix('livros')->group(function () {
         Route::get('/', [BookController::class, 'index'])->name('livros.index');
@@ -47,12 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
-
-    // Vendas
-    Route::post('/vendas', [VendaController::class, 'store'])
-        ->name('vendas.store')
-        ->middleware('verified');
-
 
     // Dashboard admin
     Route::get('/dashboard', [App\Http\Controllers\AuthController::class, 'dashboardAdmin'])->name('admin.dashboard');

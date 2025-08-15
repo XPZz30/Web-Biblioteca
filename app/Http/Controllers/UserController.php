@@ -55,4 +55,14 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('admin.dashboard')->with('success', 'Usuário excluído com sucesso!');
     }
+    // Exclusão em massa de usuários
+    public function bulkDelete(Request $request)
+    {
+        $ids = $request->input('selected_users', []);
+        if (!empty($ids)) {
+            User::whereIn('id', $ids)->delete();
+            return redirect()->route('admin.dashboard')->with('success', 'Usuários excluídos com sucesso!');
+        }
+        return redirect()->route('admin.dashboard')->with('error', 'Nenhum usuário selecionado.');
+    }
 }

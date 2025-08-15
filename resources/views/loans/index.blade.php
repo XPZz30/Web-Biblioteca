@@ -39,7 +39,7 @@
                         </td>
                         <td>
                             @if($loan->returned_at)
-                                {{ \Carbon\Carbon::parse($loan->returned_at)->format('d/m/Y H:i') }}
+                                {{ \Carbon\Carbon::parse($loan->returned_at)->format('d/m/Y') }}
                             @else
                                 <span class="text-muted">-</span>
                             @endif
