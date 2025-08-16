@@ -8,7 +8,7 @@
         @foreach($books as $book)
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card book-card shadow-lg h-100 border-0 text-light position-relative">
-                <div class="book-cover-container p-3 d-flex justify-content-center align-items-center" style="height: 320px;">
+                <div class="book-cover-container p-3 d-flex justify-content-center align-items-center" style="height: 250px;">
                     <img src="{{ $book->cover }}" alt="{{ $book->title }}" class="img-fluid rounded book-cover-img" style="max-height: 100%; max-width: 100%; object-fit: cover; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
                 </div>
                 <div class="card-body d-flex flex-column">

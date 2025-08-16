@@ -37,7 +37,7 @@
 
         <div class="row mb-4 g-3">
             <!-- Livros -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card bg-dark text-light-gray shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Livros</h5>
@@ -55,7 +55,7 @@
                                 <input type="text" name="publisher" class="form-control form-control-sm" placeholder="Editora">
                             </div>
                             <div class="col">
-                                <input type="text" name="isbn" class="form-control form-control-sm" placeholder="ISBN">
+                                <input type="text" name="isbn" id="isbn-input" class="form-control form-control-sm" placeholder="ISBN">
                             </div>
                             <div class="col">
                                 <input type="number" name="year" class="form-control form-control-sm" placeholder="Ano" min="1000" max="9999">
@@ -278,7 +278,7 @@
             </div>
 
             <!-- Categorias -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card bg-dark text-light-gray shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Categorias</h5>
@@ -484,6 +484,31 @@
             <p class="mb-0">© {{ date('Y') }} Virtual Library. Todos os direitos reservados.</p>
             <p class="mb-0">Desenvolvido por Samuel Leal</p>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script>
+            document.getElementById('isbn-input').addEventListener('blur', function() {
+                const isbn = this.value.trim();
+                if (!isbn) return;
+                fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=AIzaSyCrkAZviDtzYaxxxCbTxHvlszxDWJK1fHY`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.totalItems > 0) {
+                            const info = data.items[0].volumeInfo;
+                            if (info.title) document.querySelector('input[name="title"]').value = info.title;
+                            if (info.authors && info.authors.length) document.querySelector('input[name="author"]').value = info.authors.join(', ');
+                            if (info.publisher) document.querySelector('input[name="publisher"]').value = info.publisher;
+                            if (info.publishedDate) {
+                                const year = info.publishedDate.split('-')[0];
+                                document.querySelector('input[name="year"]').value = year;
+                            }
+                            if (info.description) document.getElementById('description').value = info.description;
+                            if (info.imageLinks && info.imageLinks.thumbnail) document.querySelector('input[name="cover"]').value = info.imageLinks.thumbnail;
+                        } else {
+                            alert('Livro não encontrado na Google Books API.');
+                        }
+                    })
+                    .catch(() => alert('Erro ao buscar dados na Google Books API.'));
+            });
+            </script>
 </body>
 
 </html>
