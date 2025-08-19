@@ -9,7 +9,6 @@ $booksCount = Book::count();
 $categoriesCount = Category::count();
 $usersCount = User::where('role', 'user')->count();
 $adminsCount = User::where('role', 'admin')->count();
-$vendasCount = Venda::count();
 $loansCount = Loan::count();
 
-return compact('booksCount', 'categoriesCount', 'usersCount', 'adminsCount', 'vendasCount', 'loansCount');
+return compact('booksCount', 'categoriesCount', 'usersCount', 'adminsCount', 'loansCount');

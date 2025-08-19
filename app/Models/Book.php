@@ -16,17 +16,16 @@ class Book extends Model
         'isbn',
         'year',
         'stock',
+        'pages',
+        'language',
         'cover',
         'description'
     ];
+    // ...existing code... 
 
     // Relacionamento muitos-para-muitos com Categories
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'book_category', 'book_id', 'category_id');
-    }
-    public function vendas()
-    {
-        return $this->hasMany(Venda::class);
     }
 }

@@ -1,6 +1,6 @@
 .desc-container-show {
     background-color: #1a1d25;
-    color: #b9bcc0;
+    color: #ffffff;
     line-height: 1.6;
     border-radius: 1rem;
     box-shadow: 0 4px 24px rgba(0,0,0,0.18);
@@ -57,7 +57,8 @@
 }
 
 .info-container-show-title {
-    font-size: 1.25rem;
+    color: #ffffff;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
     letter-spacing: 0.5px;

@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg custom-navbar px-4 py-3">
         <div class="container-fluid">
             <div class="d-flex align-items-center">
-                <a class="navbar-brand nav-title me-3" href="/">Virtual Library</a>
+                <a class="navbar-brand nav-title me-3" href="/livros">Virtual Library</a>
             </div>
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav gap-4">
@@ -62,9 +62,6 @@
                             <li><span class="dropdown-item text-muted">Nenhuma categoria encontrada</span></li>
                             @endforelse
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-custom" href="#">Editoras</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-custom" href="#" data-bs-toggle="modal" data-bs-target="#userLoansModal">

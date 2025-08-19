@@ -76,6 +76,7 @@ class BookController extends Controller
             'stock' => 'nullable|integer|min:0',
             'cover' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'pages' => 'nullable|integer|min:0',
             'categories' => 'array',
             'categories.*' => 'exists:categories,id',
         ]);
@@ -108,9 +109,17 @@ class BookController extends Controller
             'stock' => 'nullable|integer|min:0',
             'cover' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'pages' => 'nullable|integer|min:0',
+            'categories' => 'array',
+            'categories.*' => 'exists:categories,id',
         ]);
         $book = Book::findOrFail($id);
-        $book->update($validated);
+        $bookData = $validated;
+        unset($bookData['categories']);
+        $book->update($bookData);
+        if (!empty($request->categories)) {
+            $book->categories()->sync($request->categories);
+        }
         return redirect()->route('admin.dashboard')->with('success', 'Livro atualizado com sucesso!');
     }
 

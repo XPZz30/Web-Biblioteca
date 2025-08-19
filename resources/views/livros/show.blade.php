@@ -1,25 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.show')
 
 <head>
     <link rel="stylesheet" href="{{ asset('css/livro-show.css') }}">
 </head>
 
 @section('content')
-<div class="container py-5 background-deep-blue-show rounded shadow" style="max-width: 80%; margin: 0 auto;">
+<div class="container background-deep-blue-show rounded shadow" style="max-width: 80%; margin: 0 auto;">
     <div class="row align-items-center">
         <!-- Título, autor e capa -->
         <div class="col-md-12 d-flex flex-row align-items-start justify-content-start">
             <div class="flex-grow-1">
                 <h2 class="mb-1 fw-bold text-light" style="font-size:2rem;">{{ $book->title }}</h2>
                 <div class="mb-2">
-                    <span class="text-light" style="font-size:1.1rem;">Por
-                        @if($book->author_link)
-                        <a href="{{ $book->author_link }}" class="text-info text-decoration-underline" target="_blank">{{ $book->author }}</a>
-                        @else
-                        {{ $book->author }}
-                        @endif
-                    </span>
-                    <span class="text-light ms-2" style="font-size:1.1rem;">· {{ $book->published_at ?? ($book->year ?? '') }}</span>
+                    <span class="text-light" style="font-size:1.1rem;">Por {{ $book->author }}</span>
+                    <span class="text-light ms-2" style="font-size:1.1rem;">· {{ $book->year ?? '' }}</span>
                 </div>
             </div>
             <div class="book-cover-small ms-4 d-flex justify-content-start">
@@ -42,50 +36,34 @@
                                 <tr>
                                     <td class="fw-bold">ISBN:</td>
                                     <td>{{ $book->isbn }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Publicação:</td>
+                                    <td>{{ $book->year ?? 'Não informado' }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Editora:</td>
+                                    <td>{{ $book->publisher ?? 'Não informado' }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Autor:</td>
+                                    <td>{{ $book->author ?? 'Não informado' }}</td>
+                                </tr>
+                                <tr>
                                     <td class="fw-bold">Número de páginas:</td>
                                     <td>{{ $book->pages ?? 'Não informado' }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold">Publicação:</td>
-                                    <td>{{ $book->published_at ?? ($book->year ?? 'Não informado') }}</td>
-                                    <td class="fw-bold">Formato:</td>
-                                    <td>{{ $book->format ?? 'Não informado' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Editora:</td>
-                                    <td>
-                                        @if($book->publisher_link)
-                                        <a href="{{ $book->publisher_link }}" class="text-info text-decoration-underline" target="_blank">{{ $book->publisher }}</a>
+                                    <td class="fw-bold">Categorias:</td>
+                                    <td colspan="3">
+                                        @if($book->categories && $book->categories->count())
+                                        @foreach($book->categories as $category)
+                                        <span class="badge bg-primary me-1">{{ $category->name }}</span>
+                                        @endforeach
                                         @else
-                                        {{ $book->publisher ?? 'Não informado' }}
+                                        <span class="text-muted">Nenhuma categoria</span>
                                         @endif
                                     </td>
-                                    <td class="fw-bold">Idioma:</td>
-                                    <td>
-                                        @if($book->language_link)
-                                        <a href="{{ $book->language_link }}" class="text-info text-decoration-underline" target="_blank">{{ $book->language }}</a>
-                                        @else
-                                        {{ $book->language ?? 'Não informado' }}
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Autor:</td>
-                                    <td>
-                                        @if($book->author_link)
-                                        <a href="{{ $book->author_link }}" class="text-info text-decoration-underline" target="_blank">{{ $book->author }}</a>
-                                        @else
-                                        {{ $book->author }}
-                                        @endif
-                                    </td>
-                                    <td class="fw-bold">Editor:</td>
-                                    <td>{{ $book->editor ?? 'Não informado' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Tradutor:</td>
-                                    <td>{{ $book->translator ?? 'Não informado' }}</td>
-                                    <td class="fw-bold">Ilustrador:</td>
-                                    <td>{{ $book->illustrator ?? 'Não informado' }}</td>
                                 </tr>
                             </tbody>
                         </table>

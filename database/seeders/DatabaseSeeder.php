@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CategorySeeder::class, // Deve vir primeiro
-            BookSeeder::class,
             UserSeeder::class,
         ]);
     }

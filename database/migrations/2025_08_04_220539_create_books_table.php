@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('isbn')->nullable();
             $table->integer('year')->nullable();
             $table->unsignedInteger('stock')->default(1);
+            $table->integer('pages')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
