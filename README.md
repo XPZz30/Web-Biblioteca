@@ -24,7 +24,7 @@ LivrariaWeb é uma aplicação web desenvolvida em Laravel, criada para otimizar
 - Listagem e acompanhamento dos últimos empréstimos
 - CRUD completo para livros, categorias e usuários
 - Aprovação e finalização de empréstimos pelo painel
-- Cadastro de livros com título, autor, ISBN, ano, estoque, descrição e capa
+- Cadastro de livros com API Google Books
 - Controle de estoque com alertas
 - Criação, edição e exclusão de categorias
 - Associação de livros a categorias
